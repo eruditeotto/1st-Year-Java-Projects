@@ -1,0 +1,41 @@
+import java.util.Scanner;
+
+class MemoryChecker {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        boolean loop = true;
+
+        while (loop == true) {
+            System.out.print("Please enter the memory size of your USB Drive: ");
+            double memorySize = scan.nextInt();
+
+            System.out.print("Please enter if the memory type of your USB Drive GB/MB: ");
+            String memoryType = scan.next();
+
+            if (memorySize > 0) {
+                if (memoryType.equalsIgnoreCase("GB")) {
+                    memorySize = memorySize * 1000;
+                    double memoryLoss = memorySize * 0.7;
+                    double actualSize = memorySize - memoryLoss;
+
+                    if (actualSize < 1000) {
+                        System.out.println(actualSize + "MB");
+                    } else if (actualSize >= 1000) {
+                        System.out.println(actualSize / 1000 + "GB");
+                    }
+                } else if (memoryType.equalsIgnoreCase("MB")) {
+                    double memoryLoss = memorySize * 0.7;
+                    double actualSize = memorySize = memoryLoss;
+
+                    if (actualSize >= 1000) {
+                        System.out.println(actualSize / 1000 + "GB");
+                    } else if (actualSize < 1000) {
+                        System.out.println(actualSize + "MB");
+                    }
+                }
+            } else {
+                System.out.print("Invalid input");
+            }
+        }
+    }
+}
