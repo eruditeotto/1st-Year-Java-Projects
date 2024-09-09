@@ -1,0 +1,102 @@
+import java.util.Scanner;
+import java.util.ArrayList;
+
+class ArraysList {
+    static class Student {
+        String name;
+        double grade;
+
+        Student(String name, double grade) {
+            this.name = name;
+            this.grade = grade;
+        }
+    }
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        ArrayList<Student> students = new ArrayList<>();
+        
+        System.out.println("\nInstructions: Please choose a number of what you want to do");
+        System.out.println("1. Input a name and grade of a student");
+        System.out.println("2. Display all students and their grades");
+        System.out.println("3. Remove a student from the list");
+        System.out.println("4. Find the highest graded student");
+        System.out.println("5. Exit the program");
+
+        boolean running = true;
+
+        while (running){
+            System.out.println("\nType '6' if you want to display the instructions again.");
+            System.out.print("Please input the number: ");
+            int number = scan.nextInt();
+
+            switch (number) {
+                case 1:
+                    System.out.print("Please enter the name: ");
+                    scan.nextLine();
+                    String name = scan.nextLine();
+
+                    System.out.print("Please enter the grade: ");
+                    double grade = scan.nextDouble();
+                    students.add(new Student(name, grade));
+                    System.out.println("Student added.");
+                    break;
+                case 2:
+                    if (students.isEmpty()) {
+                        System.out.println("There are no students to list.");
+                    } else {
+                        System.out.println("Students List: ");
+                        for (Student student : students) {
+                            System.out.println("Student: " + student.name + ": " + student.grade);
+                        }
+                        break;
+                    }
+                case 3:
+                    if (students.isEmpty()) {
+                        System.out.println("There are no students on the list to remove.");
+                    } else {
+                        System.out.print("Which student do you want to remove from the list?: ");
+                        String studentNameToRemove = scan.next();
+
+                        for (Student student : students) {
+                            if (student.name.equalsIgnoreCase(studentNameToRemove)) {
+                                students.remove(student);  // Remove the student
+                                System.out.println("Student removed.");
+                                break;  // Exit the loop since the student is found and removed
+                            } else {
+                                System.out.print("Student was not found");
+                                break;
+                            }
+                        }
+                    }
+                    break;
+                case 4:
+                    if (students.isEmpty()) {
+                        System.out.println("No students to check.");
+                    } else {
+                        Student highest = students.get(0);
+                        for (Student student : students) {
+                            if (student.grade > highest.grade) {
+                                highest = student;
+                            }
+                        }
+                        System.out.println("Highest Student: " + highest.name + ": " + highest.grade);
+                    }
+                    break;
+                case 5:
+                    running = false;
+                    break;
+                case 6:
+                    System.out.println("\nInstructions: Please choose a number of what you want to do");
+                    System.out.println("1. Input a name and grade of a student");
+                    System.out.println("2. Display all students and their grades");
+                    System.out.println("3. Remove a student from the list");
+                    System.out.println("4. Find the highest graded student");
+                    System.out.println("5. Exit the program");
+                    System.out.print("Please input the number: ");
+                    break;
+                default:
+                    System.out.println("Invalid input of number.");
+            }
+        }
+    }
+}
