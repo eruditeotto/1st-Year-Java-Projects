@@ -1,0 +1,99 @@
+
+class Pyramid {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+
+        System.out.println("This program will make a pyramid for you based on the number you enter.");
+        System.out.println("1. Normal * Pyramid");
+        System.out.println("2. Inverted * Pyramid");
+        System.out.println("3. Normal Number Pyramid");
+        System.out.println("4. Inverted Number Pyramid");
+        System.out.println("5. Inverted Number Pyramid 2nd Pattern");
+        System.out.print("Please enter the number of the type of pyramid you want to print: ");
+        int pyramidType = scan.nextInt();
+
+        System.out.println("Please enter the number of stacks you want the pyramid to have: ");
+        int num = scan.nextInt();
+
+        String asterisk = "*";
+        String space = "  ";
+        int num1 = num;
+        switch (pyramidType) {
+            case 1:
+                for (int i = 1; i <= num; ++i) {
+                    for (int y = 1; y < num1; y++) {
+                        System.out.print(space);
+                    }
+                    for (int j = 1; j <= i; ++j) {
+                        System.out.print("* ");
+                    }
+                    for (int j = 2; j <= i; ++j) {
+                        System.out.print("* ");
+                    }
+                    num1 = num1 - 1;
+                    System.out.println();
+                }
+                break;
+            case 2:
+                for (int i = 1; i <= num; ++i) {
+                    for (int j = 1; j < i; ++j) {
+                        System.out.print(space);
+                    }
+                    for (int y = 1; y <= num1; y++) {
+                        System.out.print("* ");
+                    }
+                    for (int j = 2; j <= num1; ++j) {
+                        System.out.print("* ");
+                    }
+                    num1 = num1 - 1;
+                    System.out.println();
+                }
+                break;
+            case 3:
+                for (int i = 1; i <= num; ++i) {
+                    for (int y = 1; y < num1; y++) {
+                        System.out.print(space);
+                    }
+                    for (int j = 1; j <= i; ++j) {
+                        System.out.print(i + " ");
+                    }
+                    for (int j = 2; j <= i; ++j) {
+                        System.out.print(i + " ");
+                    }
+                    num1 = num1 - 1;
+                    System.out.println();
+                }
+            case 4:
+                for (int i = 1; i <= num; ++i) {
+                    for (int j = 1; j < i; ++j) {
+                        System.out.print(space);
+                    }
+                    for (int y = 1; y <= num1; y++) {
+                        System.out.print(i + " ");
+                    }
+                    for (int j = 2; j <= num1; ++j) {
+                        System.out.print(i + " ");
+                    }
+                    num1 = num1 - 1;
+                    System.out.println();
+                }
+            case 5:
+                for (int i = 1; i <= num; ++i) {
+                    for (int j = 1; j < i; ++j) {
+                        System.out.print(space);
+                    }
+                    for (int y = 1; y <= num1; y++) {
+                        System.out.print(y + " ");
+                    }
+                    num1 = num1 - 1;
+                    for (int j = num1; j >= 1; --j) {
+                        System.out.print(j + " ");
+                    }
+                    System.out.println();
+                }
+                break;
+            default:
+                System.out.print("Invalid option.");
+        }
+    }
+}
